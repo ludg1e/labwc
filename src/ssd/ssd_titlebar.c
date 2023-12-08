@@ -94,7 +94,7 @@ ssd_titlebar_create(struct ssd *ssd)
 			corner_top_left, menu_button_unpressed, menu_button_hover, 0, view);
 		add_scene_button(&subtree->parts, LAB_SSD_BUTTON_ICONIFY, parent,
 			color, iconify_button_unpressed, iconify_button_hover,
-			width - button_width * 3 + button_width, view);
+			width - button_width * 3, view);
 		add_scene_button(&subtree->parts, LAB_SSD_BUTTON_MAXIMIZE, parent,
 			color, maximize_button_unpressed, maximize_button_hover,
 			width - button_width * 2, view);
