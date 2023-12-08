@@ -24,6 +24,7 @@ ssd_border_create(struct ssd *ssd)
 	int full_width = width + 2 * theme->border_width;
 
 	float *color;
+	float *separator_color;
 	struct wlr_scene_tree *parent;
 	struct ssd_sub_tree *subtree;
 
@@ -35,8 +36,10 @@ ssd_border_create(struct ssd *ssd)
 		parent = subtree->tree;
 		if (subtree == &ssd->border.active) {
 			color = theme->window_active_border_color;
+			separator_color = theme->window_active_title_separator_color;
 		} else {
 			color = theme->window_inactive_border_color;
+			separator_color = theme->window_inactive_title_separator_color;
 			wlr_scene_node_set_enabled(&parent->node, false);
 		}
 		wl_list_init(&subtree->parts);
@@ -51,6 +54,10 @@ ssd_border_create(struct ssd *ssd)
 			width - 2 * SSD_BUTTON_WIDTH, theme->border_width,
 			theme->border_width + SSD_BUTTON_WIDTH,
 			-(ssd->titlebar.height + theme->border_width), color);
+		add_scene_rect(&subtree->parts, LAB_SSD_PART_TITLEBAR_SEPARATOR, parent,
+			width - 2 * SSD_BUTTON_WIDTH, theme->border_width,
+			theme->border_width + SSD_BUTTON_WIDTH,
+			height - (ssd->titlebar.height), color);
 	} FOR_EACH_END
 
 	if (view->maximized == VIEW_AXIS_BOTH) {

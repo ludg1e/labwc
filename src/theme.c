@@ -308,12 +308,16 @@ theme_builtin(struct theme *theme)
 	theme->border_width = 1;
 	theme->padding_width = 0;
 	theme->padding_height = 3;
+	// theme->title_width = INT_MIN;
 	theme->title_height = INT_MIN;
 	theme->menu_overlap_x = 0;
 	theme->menu_overlap_y = 0;
 
 	parse_hexstr("#e1dedb", theme->window_active_border_color);
+	parse_hexstr("", theme->window_active_title_separator_color);
+
 	parse_hexstr("#f6f5f4", theme->window_inactive_border_color);
+	parse_hexstr("", theme->window_inactive_title_separator_color)
 
 	parse_hexstr("#ff0000", theme->window_toggled_keybinds_color);
 
@@ -409,8 +413,14 @@ entry(struct theme *theme, const char *key, const char *value)
 	if (match_glob(key, "window.active.border.color")) {
 		parse_hexstr(value, theme->window_active_border_color);
 	}
+	if (match_glob(key, "window.active.title.separator.color")) {
+		parse_hexstr(value, theme->window_active_title_separator_color);
+	}
 	if (match_glob(key, "window.inactive.border.color")) {
 		parse_hexstr(value, theme->window_inactive_border_color);
+	}
+	if (match_glob(key, "window.inactive.title.separator.color")) {
+		parse_hexstr(value, theme->window_inactive_title_separator_color);
 	}
 	/* border.color is obsolete, but handled for backward compatibility */
 	if (match_glob(key, "border.color")) {

@@ -158,6 +158,8 @@ ssd_resize_edges(enum ssd_part_type type)
 		return WLR_EDGE_BOTTOM;
 	case LAB_SSD_PART_LEFT:
 		return WLR_EDGE_LEFT;
+	case LAB_SSD_PART_TITLEBAR_SEPARATOR:
+		return WLR_EDGE_NONE;
 	case LAB_SSD_PART_CORNER_TOP_LEFT:
 		return WLR_EDGE_TOP | WLR_EDGE_LEFT;
 	case LAB_SSD_PART_CORNER_TOP_RIGHT:
