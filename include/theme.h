@@ -19,6 +19,7 @@ enum lab_justification {
 
 struct theme {
 	int border_width;
+	int padding_width;
 	int padding_height;
 	int title_height;
 	int menu_overlap_x;

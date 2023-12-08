@@ -306,6 +306,7 @@ static void
 theme_builtin(struct theme *theme)
 {
 	theme->border_width = 1;
+	theme->padding_width = 0;
 	theme->padding_height = 3;
 	theme->title_height = INT_MIN;
 	theme->menu_overlap_x = 0;
@@ -382,6 +383,9 @@ entry(struct theme *theme, const char *key, const char *value)
 	 */
 	if (match_glob(key, "border.width")) {
 		theme->border_width = atoi(value);
+	}
+	if (match_glob(key, "padding.width")) {
+		theme->padding_width = atoi(value);
 	}
 	if (match_glob(key, "padding.height")) {
 		theme->padding_height = atoi(value);
