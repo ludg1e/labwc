@@ -308,7 +308,6 @@ theme_builtin(struct theme *theme)
 	theme->border_width = 1;
 	theme->padding_width = 0;
 	theme->padding_height = 3;
-	// theme->title_width = INT_MIN;
 	theme->title_height = INT_MIN;
 	theme->menu_overlap_x = 0;
 	theme->menu_overlap_y = 0;

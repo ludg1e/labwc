@@ -25,6 +25,7 @@ ssd_titlebar_create(struct ssd *ssd)
 	struct view *view = ssd->view;
 	struct theme *theme = view->server->theme;
 	int width = view->current.width;
+	int button_width = SSD_BUTTON_WIDTH + theme->padding_width;
 
 	float *color;
 	struct wlr_scene_tree *parent;
@@ -86,23 +87,23 @@ ssd_titlebar_create(struct ssd *ssd)
 		/* Title */
 		add_scene_rect(&subtree->parts, LAB_SSD_PART_TITLEBAR, parent,
 			width - SSD_BUTTON_WIDTH * SSD_BUTTON_COUNT, theme->title_height,
-			SSD_BUTTON_WIDTH, 0, color);
+			button_width, 0, color);
 		/* Buttons */
 		add_scene_button_corner(&subtree->parts,
 			LAB_SSD_BUTTON_WINDOW_MENU, LAB_SSD_PART_CORNER_TOP_LEFT, parent,
 			corner_top_left, menu_button_unpressed, menu_button_hover, 0, view);
 		add_scene_button(&subtree->parts, LAB_SSD_BUTTON_ICONIFY, parent,
 			color, iconify_button_unpressed, iconify_button_hover,
-			width - SSD_BUTTON_WIDTH * 3, view);
+			width - button_width * 3 + button_width, view);
 		add_scene_button(&subtree->parts, LAB_SSD_BUTTON_MAXIMIZE, parent,
 			color, maximize_button_unpressed, maximize_button_hover,
-			width - SSD_BUTTON_WIDTH * 2, view);
+			width - button_width * 2, view);
 		add_toggled_icon(&subtree->parts, LAB_SSD_BUTTON_MAXIMIZE,
 			restore_button_unpressed, restore_button_hover);
 		add_scene_button_corner(&subtree->parts,
 			LAB_SSD_BUTTON_CLOSE, LAB_SSD_PART_CORNER_TOP_RIGHT, parent,
 			corner_top_right, close_button_unpressed, close_button_hover,
-			width - SSD_BUTTON_WIDTH * 1, view);
+			width - button_width * 1, view);
 	} FOR_EACH_END
 
 	ssd_update_title(ssd);
