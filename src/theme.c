@@ -316,7 +316,7 @@ theme_builtin(struct theme *theme)
 	parse_hexstr("", theme->window_active_title_separator_color);
 
 	parse_hexstr("#f6f5f4", theme->window_inactive_border_color);
-	parse_hexstr("", theme->window_inactive_title_separator_color)
+	parse_hexstr("", theme->window_inactive_title_separator_color);
 
 	parse_hexstr("#ff0000", theme->window_toggled_keybinds_color);
 
